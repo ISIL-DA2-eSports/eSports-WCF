@@ -31,7 +31,7 @@ namespace WebWCF_eSports.Jugador
 
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Torneo/WebTorneoFecha.aspx");
+            Response.Redirect("WebRankingJugador.aspx");
 
         }
     }

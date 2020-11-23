@@ -11,8 +11,8 @@
 namespace WebWCF_eSports.ProxyJugador {
     using System.Runtime.Serialization;
     using System;
-    
-    
+    using System.Web.UI.WebControls;
+
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="JugadorEstadistica", Namespace="http://schemas.datacontract.org/2004/07/WCF_eSports")]
@@ -351,6 +351,11 @@ namespace WebWCF_eSports.ProxyJugador {
         
         public System.Threading.Tasks.Task<WebWCF_eSports.ProxyJugador.JugadorBE[]> ListarJugadoresPorEdadAsync(short edad) {
             return base.Channel.ListarJugadoresPorEdadAsync(edad);
+        }
+
+        internal object RankingJugador(DropDownList cbTop)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace WebWCF_eSports.Heroe
         }
         protected void btnSiguiente_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Jugador/WebJugadorPais.aspx");
+            Response.Redirect("../Jugador/WebPaisJugador.aspx");
         }
     }
 }
