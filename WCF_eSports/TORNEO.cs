@@ -21,6 +21,7 @@ namespace WCF_eSports
             this.DETALLE_PERSONAL = new HashSet<DETALLE_PERSONAL>();
             this.PARTIDA = new HashSet<PARTIDA>();
             this.PRIZEPOOL = new HashSet<PRIZEPOOL>();
+            this.DETALLE_JUGADOR_PARTIDA = new HashSet<DETALLE_JUGADOR_PARTIDA>();
         }
     
         public int IdTorneo { get; set; }
@@ -41,5 +42,7 @@ namespace WCF_eSports
         public virtual ICollection<PARTIDA> PARTIDA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRIZEPOOL> PRIZEPOOL { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_JUGADOR_PARTIDA> DETALLE_JUGADOR_PARTIDA { get; set; }
     }
 }

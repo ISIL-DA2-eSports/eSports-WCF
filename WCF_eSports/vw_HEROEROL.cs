@@ -12,21 +12,16 @@ namespace WCF_eSports
     using System;
     using System.Collections.Generic;
     
-    public partial class DETALLE_JUGADOR_PARTIDA
+    public partial class vw_HEROEROL
     {
-        public int IdJugador { get; set; }
-        public int IdEquipo { get; set; }
         public int IdPartida { get; set; }
+        public int IdJugador { get; set; }
+        public string NickJugador { get; set; }
         public int IdHeroe { get; set; }
+        public string NomHeroe { get; set; }
+        public string RolJugador { get; set; }
         public int Kills { get; set; }
         public int Deaths { get; set; }
         public int Assists { get; set; }
-        public int IdTorneo { get; set; }
-    
-        public virtual EQUIPO EQUIPO { get; set; }
-        public virtual HEROE HEROE { get; set; }
-        public virtual JUGADOR JUGADOR { get; set; }
-        public virtual PARTIDA PARTIDA { get; set; }
-        public virtual TORNEO TORNEO { get; set; }
     }
 }

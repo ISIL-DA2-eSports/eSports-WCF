@@ -129,10 +129,28 @@
     <Compile Include="usp_EdadJugador_Result.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_GananciaTorneo_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_HeroesPorcentaje_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
     <Compile Include="usp_KillsEquipoPorPartida_Result.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarHeroeRol_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_PuestoPorTorneo_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_PuestosEquipos_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_TorneosPorEquipo_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_HEROEROL.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="vw_RankingKillsPorPartida.cs">

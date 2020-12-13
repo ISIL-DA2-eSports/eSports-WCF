@@ -18,11 +18,13 @@
         </EntityType>
         <EntityType Name="DETALLE_JUGADOR_PARTIDA">
           <Key>
+            <PropertyRef Name="IdTorneo" />
             <PropertyRef Name="IdJugador" />
             <PropertyRef Name="IdEquipo" />
             <PropertyRef Name="IdPartida" />
             <PropertyRef Name="IdHeroe" />
           </Key>
+          <Property Name="IdTorneo" Type="int" Nullable="false" />
           <Property Name="IdJugador" Type="int" Nullable="false" />
           <Property Name="IdEquipo" Type="int" Nullable="false" />
           <Property Name="IdPartida" Type="int" Nullable="false" />
@@ -138,6 +140,30 @@
           <Property Name="IdJuego" Type="int" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'eSports.dbo.vw_HEROEROL' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="vw_HEROEROL">
+          <Key>
+            <PropertyRef Name="IdPartida" />
+            <PropertyRef Name="IdJugador" />
+            <PropertyRef Name="NickJugador" />
+            <PropertyRef Name="IdHeroe" />
+            <PropertyRef Name="NomHeroe" />
+            <PropertyRef Name="RolJugador" />
+            <PropertyRef Name="Kills" />
+            <PropertyRef Name="Deaths" />
+            <PropertyRef Name="Assists" />
+          </Key>
+          <Property Name="IdPartida" Type="int" Nullable="false" />
+          <Property Name="IdJugador" Type="int" Nullable="false" />
+          <Property Name="NickJugador" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="IdHeroe" Type="int" Nullable="false" />
+          <Property Name="NomHeroe" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RolJugador" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Kills" Type="int" Nullable="false" />
+          <Property Name="Deaths" Type="int" Nullable="false" />
+          <Property Name="Assists" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="vw_RankingKillsPorPartida">
           <Key>
@@ -182,8 +208,10 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_J__IdEqu__5BE2A6F2">
-          <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="1" />
+        <Association Name="FK__DETALLE_J__IdEqu__1EA48E88">
+          <End Role="EQUIPO" Type="Self.EQUIPO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="DETALLE_JUGADOR_PARTIDA" Type="Self.DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="EQUIPO">
@@ -194,7 +222,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_J__IdHer__571DF1D5">
+        <Association Name="FK__DETALLE_J__IdHer__1F98B2C1">
           <End Role="HEROE" Type="Self.HEROE" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -208,10 +236,8 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_J__IdJug__5441852A">
-          <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__DETALLE_J__IdJug__236943A5">
+          <End Role="JUGADOR" Type="Self.JUGADOR" Multiplicity="1" />
           <End Role="DETALLE_JUGADOR_PARTIDA" Type="Self.DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="JUGADOR">
@@ -222,10 +248,8 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETALLE_J__IdPar__5629CD9C">
-          <End Role="PARTIDA" Type="Self.PARTIDA" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+        <Association Name="FK__DETALLE_J__IdPar__22751F6C">
+          <End Role="PARTIDA" Type="Self.PARTIDA" Multiplicity="1" />
           <End Role="DETALLE_JUGADOR_PARTIDA" Type="Self.DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PARTIDA">
@@ -233,6 +257,20 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Principal>
             <Dependent Role="DETALLE_JUGADOR_PARTIDA">
               <PropertyRef Name="IdPartida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETALLE_J__IdTor__1DB06A4F">
+          <End Role="TORNEO" Type="Self.TORNEO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DETALLE_JUGADOR_PARTIDA" Type="Self.DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TORNEO">
+              <PropertyRef Name="IdTorneo" />
+            </Principal>
+            <Dependent Role="DETALLE_JUGADOR_PARTIDA">
+              <PropertyRef Name="IdTorneo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -346,18 +384,15 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="ConsultarFechaTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="FechaIni" Type="datetime" Mode="In" />
-          <Parameter Name="FechaFin" Type="datetime" Mode="In" />
-        </Function>
-        <Function Name="ConsultarHeroeComplejidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Complejidad" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="ListarJugadorPorPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pais" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="usp_EdadJugador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Edad" Type="int" Mode="In" />
+        <Function Name="usp_GananciaTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTorneo" Type="int" Mode="In" />
+          <Parameter Name="Monto" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="usp_HeroesPorcentaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTorneo" Type="int" Mode="In" />
         </Function>
         <Function Name="usp_KillsEquipoPorPartida" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="partida" Type="int" Mode="In" />
@@ -365,6 +400,15 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
         <Function Name="usp_ListarHeroeRol" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idheroe" Type="int" Mode="In" />
           <Parameter Name="roljugador" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="usp_PuestoPorTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Puesto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_PuestosEquipos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdTorneo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="usp_TorneosPorEquipo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEquipo" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="eSportsModelStoreContainer">
           <EntitySet Name="DETALLE_EQUIPO" EntityType="Self.DETALLE_EQUIPO" Schema="dbo" store:Type="Tables" />
@@ -379,6 +423,19 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <EntitySet Name="PRIZEPOOL" EntityType="Self.PRIZEPOOL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUESTO_PRIZEPOOL" EntityType="Self.PUESTO_PRIZEPOOL" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TORNEO" EntityType="Self.TORNEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vw_HEROEROL" EntityType="Self.vw_HEROEROL" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_HEROEROL].[IdPartida] AS [IdPartida], 
+    [vw_HEROEROL].[IdJugador] AS [IdJugador], 
+    [vw_HEROEROL].[NickJugador] AS [NickJugador], 
+    [vw_HEROEROL].[IdHeroe] AS [IdHeroe], 
+    [vw_HEROEROL].[NomHeroe] AS [NomHeroe], 
+    [vw_HEROEROL].[RolJugador] AS [RolJugador], 
+    [vw_HEROEROL].[Kills] AS [Kills], 
+    [vw_HEROEROL].[Deaths] AS [Deaths], 
+    [vw_HEROEROL].[Assists] AS [Assists]
+    FROM [dbo].[vw_HEROEROL] AS [vw_HEROEROL]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_RankingKillsPorPartida" EntityType="Self.vw_RankingKillsPorPartida" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_RankingKillsPorPartida].[IdPartida] AS [IdPartida], 
@@ -398,20 +455,24 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             <End Role="TORNEO" EntitySet="TORNEO" />
             <End Role="DETALLE_EQUIPO" EntitySet="DETALLE_EQUIPO" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_J__IdEqu__5BE2A6F2" Association="Self.FK__DETALLE_J__IdEqu__5BE2A6F2">
+          <AssociationSet Name="FK__DETALLE_J__IdEqu__1EA48E88" Association="Self.FK__DETALLE_J__IdEqu__1EA48E88">
             <End Role="EQUIPO" EntitySet="EQUIPO" />
             <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_J__IdHer__571DF1D5" Association="Self.FK__DETALLE_J__IdHer__571DF1D5">
+          <AssociationSet Name="FK__DETALLE_J__IdHer__1F98B2C1" Association="Self.FK__DETALLE_J__IdHer__1F98B2C1">
             <End Role="HEROE" EntitySet="HEROE" />
             <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_J__IdJug__5441852A" Association="Self.FK__DETALLE_J__IdJug__5441852A">
+          <AssociationSet Name="FK__DETALLE_J__IdJug__236943A5" Association="Self.FK__DETALLE_J__IdJug__236943A5">
             <End Role="JUGADOR" EntitySet="JUGADOR" />
             <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETALLE_J__IdPar__5629CD9C" Association="Self.FK__DETALLE_J__IdPar__5629CD9C">
+          <AssociationSet Name="FK__DETALLE_J__IdPar__22751F6C" Association="Self.FK__DETALLE_J__IdPar__22751F6C">
             <End Role="PARTIDA" EntitySet="PARTIDA" />
+            <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETALLE_J__IdTor__1DB06A4F" Association="Self.FK__DETALLE_J__IdTor__1DB06A4F">
+            <End Role="TORNEO" EntitySet="TORNEO" />
             <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
           </AssociationSet>
           <AssociationSet Name="FK__DETALLE_P__IdPer__4F7CD00D" Association="Self.FK__DETALLE_P__IdPer__4F7CD00D">
@@ -470,6 +531,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
             <PropertyRef Name="IdEquipo" />
             <PropertyRef Name="IdPartida" />
             <PropertyRef Name="IdHeroe" />
+            <PropertyRef Name="IdTorneo" />
           </Key>
           <Property Name="IdJugador" Type="Int32" Nullable="false" />
           <Property Name="IdEquipo" Type="Int32" Nullable="false" />
@@ -482,6 +544,8 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <NavigationProperty Name="HEROE" Relationship="Self.FK__DETALLE_J__IdHer__571DF1D5" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="HEROE" />
           <NavigationProperty Name="JUGADOR" Relationship="Self.FK__DETALLE_J__IdJug__5441852A" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="JUGADOR" />
           <NavigationProperty Name="PARTIDA" Relationship="Self.FK__DETALLE_J__IdPar__5629CD9C" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="PARTIDA" />
+          <Property Name="IdTorneo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TORNEO" Relationship="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="TORNEO" />
         </EntityType>
         <EntityType Name="DETALLE_PERSONAL">
           <Key>
@@ -610,6 +674,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <NavigationProperty Name="JUEGO" Relationship="Self.FK__TORNEO__IdJuego__4D94879B" FromRole="TORNEO" ToRole="JUEGO" />
           <NavigationProperty Name="PARTIDA" Relationship="Self.FK__PARTIDA__IdTorne__534D60F1" FromRole="TORNEO" ToRole="PARTIDA" />
           <NavigationProperty Name="PRIZEPOOL" Relationship="Self.FK__PRIZEPOOL__IdTor__5812160E" FromRole="TORNEO" ToRole="PRIZEPOOL" />
+          <NavigationProperty Name="DETALLE_JUGADOR_PARTIDA" Relationship="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F" FromRole="TORNEO" ToRole="DETALLE_JUGADOR_PARTIDA" />
         </EntityType>
         <EntityType Name="vw_RankingKillsPorPartida">
           <Key>
@@ -911,6 +976,27 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <FunctionImport Name="usp_EdadJugador" ReturnType="Collection(eSportsModel.usp_EdadJugador_Result)">
           <Parameter Name="Edad" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="usp_GananciaTorneo" ReturnType="Collection(eSportsModel.usp_GananciaTorneo_Result)">
+            <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+            <Parameter Name="Monto" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <AssociationSet Name="FK__DETALLE_J__IdTor__1DB06A4F" Association="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F">
+            <End Role="TORNEO" EntitySet="TORNEO" />
+            <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
+          </AssociationSet>
+          <FunctionImport Name="usp_HeroesPorcentaje" ReturnType="Collection(eSportsModel.usp_HeroesPorcentaje_Result)">
+          <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="vw_HEROEROL" EntityType="eSportsModel.vw_HEROEROL" />
+          <FunctionImport Name="usp_PuestosEquipos" ReturnType="Collection(eSportsModel.usp_PuestosEquipos_Result)">
+          <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_TorneosPorEquipo" ReturnType="Collection(eSportsModel.usp_TorneosPorEquipo_Result)">
+          <Parameter Name="IdEquipo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="usp_PuestoPorTorneo" ReturnType="Collection(eSportsModel.usp_PuestoPorTorneo_Result)">
+          <Parameter Name="Puesto" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="usp_KillsEquipoPorPartida_Result">
           <Property Type="String" Name="Enfrentamiento" Nullable="false" MaxLength="87" />
@@ -966,6 +1052,73 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <Property Type="String" Name="PaisJugador" Nullable="false" MaxLength="30" />
           <Property Type="Int32" Name="EdadJugador" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="usp_GananciaTorneo_Result">
+          <Property Type="String" Name="NomEquipo" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Puesto" Nullable="true" />
+          <Property Type="Decimal" Name="Ganancia" Nullable="true" Precision="16" Scale="2" />
+        </ComplexType>
+        <Association Name="FK__DETALLE_J__IdTor__1DB06A4F">
+          <End Type="eSportsModel.TORNEO" Role="TORNEO" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="eSportsModel.DETALLE_JUGADOR_PARTIDA" Role="DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TORNEO">
+              <PropertyRef Name="IdTorneo" />
+            </Principal>
+            <Dependent Role="DETALLE_JUGADOR_PARTIDA">
+              <PropertyRef Name="IdTorneo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="usp_HeroesPorcentaje_Result">
+          <Property Type="String" Name="NomHeroe" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="HeroCount" Nullable="true" />
+          <Property Type="String" Name="Porcentaje" Nullable="false" MaxLength="43" />
+        </ComplexType>
+        <EntityType Name="vw_HEROEROL">
+          <Key>
+            <PropertyRef Name="IdPartida" />
+            <PropertyRef Name="IdJugador" />
+            <PropertyRef Name="NickJugador" />
+            <PropertyRef Name="IdHeroe" />
+            <PropertyRef Name="NomHeroe" />
+            <PropertyRef Name="RolJugador" />
+            <PropertyRef Name="Kills" />
+            <PropertyRef Name="Deaths" />
+            <PropertyRef Name="Assists" />
+          </Key>
+          <Property Name="IdPartida" Type="Int32" Nullable="false" />
+          <Property Name="IdJugador" Type="Int32" Nullable="false" />
+          <Property Name="NickJugador" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdHeroe" Type="Int32" Nullable="false" />
+          <Property Name="NomHeroe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RolJugador" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Kills" Type="Int32" Nullable="false" />
+          <Property Name="Deaths" Type="Int32" Nullable="false" />
+          <Property Name="Assists" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="usp_PuestosEquipos_Result">
+          <Property Type="Int32" Name="Puesto" Nullable="true" />
+          <Property Type="String" Name="Nombre_de_Equipo" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Victorias" Nullable="false" />
+          <Property Type="Int32" Name="Derrotas" Nullable="false" />
+          <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="usp_TorneosPorEquipo_Result">
+          <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="PaisTorneo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="LugarTorneo" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Puesto" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="usp_PuestoPorTorneo_Result">
+          <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="PaisTorneo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="NomEquipo" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="PaisEquipo" Nullable="false" MaxLength="30" />
+          <Property Type="Int32" Name="Victorias" Nullable="false" />
+          <Property Type="Int32" Name="Derrotas" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -986,6 +1139,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
           <EntitySetMapping Name="DETALLE_JUGADOR_PARTIDA">
             <EntityTypeMapping TypeName="eSportsModel.DETALLE_JUGADOR_PARTIDA">
               <MappingFragment StoreEntitySet="DETALLE_JUGADOR_PARTIDA">
+                <ScalarProperty Name="IdTorneo" ColumnName="IdTorneo" />
                 <ScalarProperty Name="IdJugador" ColumnName="IdJugador" />
                 <ScalarProperty Name="IdEquipo" ColumnName="IdEquipo" />
                 <ScalarProperty Name="IdPartida" ColumnName="IdPartida" />
@@ -1145,17 +1299,6 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ConsultarHeroeComplejidad" FunctionName="eSportsModel.Store.ConsultarHeroeComplejidad">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="eSportsModel.ConsultarHeroeComplejidad_Result">
-                <ScalarProperty Name="idHeroe" ColumnName="idHeroe" />
-                <ScalarProperty Name="Atributo" ColumnName="Atributo" />
-                <ScalarProperty Name="NomHeroe" ColumnName="NomHeroe" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Complejidad" ColumnName="Complejidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_ListarHeroeRol" FunctionName="eSportsModel.Store.usp_ListarHeroeRol">
             <ResultMapping>
               <ComplexTypeMapping TypeName="eSportsModel.usp_ListarHeroeRol_Result">
@@ -1170,28 +1313,73 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="ConsultarFechaTorneo" FunctionName="eSportsModel.Store.ConsultarFechaTorneo">
+          <FunctionImportMapping FunctionImportName="usp_GananciaTorneo" FunctionName="eSportsModel.Store.usp_GananciaTorneo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="eSportsModel.ConsultarFechaTorneo_Result">
+              <ComplexTypeMapping TypeName="eSportsModel.usp_GananciaTorneo_Result">
+                <ScalarProperty Name="NomEquipo" ColumnName="NomEquipo" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Ganancia" ColumnName="Ganancia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_HeroesPorcentaje" FunctionName="eSportsModel.Store.usp_HeroesPorcentaje">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eSportsModel.usp_HeroesPorcentaje_Result">
+                <ScalarProperty Name="NomHeroe" ColumnName="NomHeroe" />
+                <ScalarProperty Name="HeroCount" ColumnName="HeroCount" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="vw_HEROEROL">
+            <EntityTypeMapping TypeName="eSportsModel.vw_HEROEROL">
+              <MappingFragment StoreEntitySet="vw_HEROEROL">
+                <ScalarProperty Name="Assists" ColumnName="Assists" />
+                <ScalarProperty Name="Deaths" ColumnName="Deaths" />
+                <ScalarProperty Name="Kills" ColumnName="Kills" />
+                <ScalarProperty Name="RolJugador" ColumnName="RolJugador" />
+                <ScalarProperty Name="NomHeroe" ColumnName="NomHeroe" />
+                <ScalarProperty Name="IdHeroe" ColumnName="IdHeroe" />
+                <ScalarProperty Name="NickJugador" ColumnName="NickJugador" />
+                <ScalarProperty Name="IdJugador" ColumnName="IdJugador" />
+                <ScalarProperty Name="IdPartida" ColumnName="IdPartida" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_PuestosEquipos" FunctionName="eSportsModel.Store.usp_PuestosEquipos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eSportsModel.usp_PuestosEquipos_Result">
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
+                <ScalarProperty Name="Nombre_de_Equipo" ColumnName="Nombre de Equipo" />
+                <ScalarProperty Name="Victorias" ColumnName="Victorias" />
+                <ScalarProperty Name="Derrotas" ColumnName="Derrotas" />
                 <ScalarProperty Name="NomTorneo" ColumnName="NomTorneo" />
-                <ScalarProperty Name="OrgTorneo" ColumnName="OrgTorneo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_TorneosPorEquipo" FunctionName="eSportsModel.Store.usp_TorneosPorEquipo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eSportsModel.usp_TorneosPorEquipo_Result">
+                <ScalarProperty Name="NomTorneo" ColumnName="NomTorneo" />
                 <ScalarProperty Name="PaisTorneo" ColumnName="PaisTorneo" />
                 <ScalarProperty Name="LugarTorneo" ColumnName="LugarTorneo" />
+                <ScalarProperty Name="Puesto" ColumnName="Puesto" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="usp_EdadJugador" FunctionName="eSportsModel.Store.usp_EdadJugador">
+          <FunctionImportMapping FunctionImportName="usp_PuestoPorTorneo" FunctionName="eSportsModel.Store.usp_PuestoPorTorneo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="eSportsModel.usp_EdadJugador_Result">
-                <ScalarProperty Name="ApeJugador" ColumnName="ApeJugador" />
-                <ScalarProperty Name="NomJugador" ColumnName="NomJugador" />
-                <ScalarProperty Name="NickJugador" ColumnName="NickJugador" />
-                <ScalarProperty Name="PaisJugador" ColumnName="PaisJugador" />
-                <ScalarProperty Name="EdadJugador" ColumnName="EdadJugador" />
+              <ComplexTypeMapping TypeName="eSportsModel.usp_PuestoPorTorneo_Result">
+                <ScalarProperty Name="NomTorneo" ColumnName="NomTorneo" />
+                <ScalarProperty Name="PaisTorneo" ColumnName="PaisTorneo" />
+                <ScalarProperty Name="NomEquipo" ColumnName="NomEquipo" />
+                <ScalarProperty Name="PaisEquipo" ColumnName="PaisEquipo" />
+                <ScalarProperty Name="Victorias" ColumnName="Victorias" />
+                <ScalarProperty Name="Derrotas" ColumnName="Derrotas" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -19,6 +19,7 @@
       <PropertyRef Name="IdEquipo" />
       <PropertyRef Name="IdPartida" />
       <PropertyRef Name="IdHeroe" />
+      <PropertyRef Name="IdTorneo" />
     </Key>
     <Property Name="IdJugador" Type="Int32" Nullable="false" />
     <Property Name="IdEquipo" Type="Int32" Nullable="false" />
@@ -31,6 +32,8 @@
     <NavigationProperty Name="HEROE" Relationship="Self.FK__DETALLE_J__IdHer__571DF1D5" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="HEROE" />
     <NavigationProperty Name="JUGADOR" Relationship="Self.FK__DETALLE_J__IdJug__5441852A" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="JUGADOR" />
     <NavigationProperty Name="PARTIDA" Relationship="Self.FK__DETALLE_J__IdPar__5629CD9C" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="PARTIDA" />
+    <Property Name="IdTorneo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TORNEO" Relationship="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F" FromRole="DETALLE_JUGADOR_PARTIDA" ToRole="TORNEO" />
   </EntityType>
   <EntityType Name="DETALLE_PERSONAL">
     <Key>
@@ -159,6 +162,7 @@
     <NavigationProperty Name="JUEGO" Relationship="Self.FK__TORNEO__IdJuego__4D94879B" FromRole="TORNEO" ToRole="JUEGO" />
     <NavigationProperty Name="PARTIDA" Relationship="Self.FK__PARTIDA__IdTorne__534D60F1" FromRole="TORNEO" ToRole="PARTIDA" />
     <NavigationProperty Name="PRIZEPOOL" Relationship="Self.FK__PRIZEPOOL__IdTor__5812160E" FromRole="TORNEO" ToRole="PRIZEPOOL" />
+    <NavigationProperty Name="DETALLE_JUGADOR_PARTIDA" Relationship="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F" FromRole="TORNEO" ToRole="DETALLE_JUGADOR_PARTIDA" />
   </EntityType>
   <EntityType Name="vw_RankingKillsPorPartida">
     <Key>
@@ -460,6 +464,27 @@
     <FunctionImport Name="usp_EdadJugador" ReturnType="Collection(eSportsModel.usp_EdadJugador_Result)">
       <Parameter Name="Edad" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="usp_GananciaTorneo" ReturnType="Collection(eSportsModel.usp_GananciaTorneo_Result)">
+      <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+      <Parameter Name="Monto" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <AssociationSet Name="FK__DETALLE_J__IdTor__1DB06A4F" Association="eSportsModel.FK__DETALLE_J__IdTor__1DB06A4F">
+      <End Role="TORNEO" EntitySet="TORNEO" />
+      <End Role="DETALLE_JUGADOR_PARTIDA" EntitySet="DETALLE_JUGADOR_PARTIDA" />
+    </AssociationSet>
+    <FunctionImport Name="usp_HeroesPorcentaje" ReturnType="Collection(eSportsModel.usp_HeroesPorcentaje_Result)">
+      <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="vw_HEROEROL" EntityType="eSportsModel.vw_HEROEROL" />
+    <FunctionImport Name="usp_PuestosEquipos" ReturnType="Collection(eSportsModel.usp_PuestosEquipos_Result)">
+      <Parameter Name="IdTorneo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_TorneosPorEquipo" ReturnType="Collection(eSportsModel.usp_TorneosPorEquipo_Result)">
+      <Parameter Name="IdEquipo" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="usp_PuestoPorTorneo" ReturnType="Collection(eSportsModel.usp_PuestoPorTorneo_Result)">
+      <Parameter Name="Puesto" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="usp_KillsEquipoPorPartida_Result">
     <Property Type="String" Name="Enfrentamiento" Nullable="false" MaxLength="87" />
@@ -514,5 +539,72 @@
     <Property Type="String" Name="NickJugador" Nullable="false" MaxLength="30" />
     <Property Type="String" Name="PaisJugador" Nullable="false" MaxLength="30" />
     <Property Type="Int32" Name="EdadJugador" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_GananciaTorneo_Result">
+    <Property Type="String" Name="NomEquipo" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Puesto" Nullable="true" />
+    <Property Type="Decimal" Name="Ganancia" Nullable="true" Precision="16" Scale="2" />
+  </ComplexType>
+  <Association Name="FK__DETALLE_J__IdTor__1DB06A4F">
+    <End Type="eSportsModel.TORNEO" Role="TORNEO" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="eSportsModel.DETALLE_JUGADOR_PARTIDA" Role="DETALLE_JUGADOR_PARTIDA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TORNEO">
+        <PropertyRef Name="IdTorneo" />
+      </Principal>
+      <Dependent Role="DETALLE_JUGADOR_PARTIDA">
+        <PropertyRef Name="IdTorneo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="usp_HeroesPorcentaje_Result">
+    <Property Type="String" Name="NomHeroe" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="HeroCount" Nullable="true" />
+    <Property Type="String" Name="Porcentaje" Nullable="false" MaxLength="43" />
+  </ComplexType>
+  <EntityType Name="vw_HEROEROL">
+    <Key>
+      <PropertyRef Name="IdPartida" />
+      <PropertyRef Name="IdJugador" />
+      <PropertyRef Name="NickJugador" />
+      <PropertyRef Name="IdHeroe" />
+      <PropertyRef Name="NomHeroe" />
+      <PropertyRef Name="RolJugador" />
+      <PropertyRef Name="Kills" />
+      <PropertyRef Name="Deaths" />
+      <PropertyRef Name="Assists" />
+    </Key>
+    <Property Name="IdPartida" Type="Int32" Nullable="false" />
+    <Property Name="IdJugador" Type="Int32" Nullable="false" />
+    <Property Name="NickJugador" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="IdHeroe" Type="Int32" Nullable="false" />
+    <Property Name="NomHeroe" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RolJugador" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Kills" Type="Int32" Nullable="false" />
+    <Property Name="Deaths" Type="Int32" Nullable="false" />
+    <Property Name="Assists" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="usp_PuestosEquipos_Result">
+    <Property Type="Int32" Name="Puesto" Nullable="true" />
+    <Property Type="String" Name="Nombre_de_Equipo" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Victorias" Nullable="false" />
+    <Property Type="Int32" Name="Derrotas" Nullable="false" />
+    <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="usp_TorneosPorEquipo_Result">
+    <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="PaisTorneo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="LugarTorneo" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Puesto" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="usp_PuestoPorTorneo_Result">
+    <Property Type="String" Name="NomTorneo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="PaisTorneo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="NomEquipo" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="PaisEquipo" Nullable="false" MaxLength="30" />
+    <Property Type="Int32" Name="Victorias" Nullable="false" />
+    <Property Type="Int32" Name="Derrotas" Nullable="false" />
   </ComplexType>
 </Schema>

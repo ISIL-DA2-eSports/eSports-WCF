@@ -40,6 +40,7 @@ namespace WCF_eSports
         public virtual DbSet<PUESTO_PRIZEPOOL> PUESTO_PRIZEPOOL { get; set; }
         public virtual DbSet<TORNEO> TORNEO { get; set; }
         public virtual DbSet<vw_RankingKillsPorPartida> vw_RankingKillsPorPartida { get; set; }
+        public virtual DbSet<vw_HEROEROL> vw_HEROEROL { get; set; }
     
         public virtual ObjectResult<usp_KillsEquipoPorPartida_Result> usp_KillsEquipoPorPartida(Nullable<int> partida)
         {
@@ -110,6 +111,55 @@ namespace WCF_eSports
                 new ObjectParameter("Edad", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_EdadJugador_Result>("usp_EdadJugador", edadParameter);
+        }
+    
+        public virtual ObjectResult<usp_GananciaTorneo_Result> usp_GananciaTorneo(Nullable<int> idTorneo, Nullable<decimal> monto)
+        {
+            var idTorneoParameter = idTorneo.HasValue ?
+                new ObjectParameter("IdTorneo", idTorneo) :
+                new ObjectParameter("IdTorneo", typeof(int));
+    
+            var montoParameter = monto.HasValue ?
+                new ObjectParameter("Monto", monto) :
+                new ObjectParameter("Monto", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_GananciaTorneo_Result>("usp_GananciaTorneo", idTorneoParameter, montoParameter);
+        }
+    
+        public virtual ObjectResult<usp_HeroesPorcentaje_Result> usp_HeroesPorcentaje(Nullable<int> idTorneo)
+        {
+            var idTorneoParameter = idTorneo.HasValue ?
+                new ObjectParameter("IdTorneo", idTorneo) :
+                new ObjectParameter("IdTorneo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_HeroesPorcentaje_Result>("usp_HeroesPorcentaje", idTorneoParameter);
+        }
+    
+        public virtual ObjectResult<usp_PuestosEquipos_Result> usp_PuestosEquipos(Nullable<int> idTorneo)
+        {
+            var idTorneoParameter = idTorneo.HasValue ?
+                new ObjectParameter("IdTorneo", idTorneo) :
+                new ObjectParameter("IdTorneo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PuestosEquipos_Result>("usp_PuestosEquipos", idTorneoParameter);
+        }
+    
+        public virtual ObjectResult<usp_TorneosPorEquipo_Result> usp_TorneosPorEquipo(Nullable<int> idEquipo)
+        {
+            var idEquipoParameter = idEquipo.HasValue ?
+                new ObjectParameter("IdEquipo", idEquipo) :
+                new ObjectParameter("IdEquipo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_TorneosPorEquipo_Result>("usp_TorneosPorEquipo", idEquipoParameter);
+        }
+    
+        public virtual ObjectResult<usp_PuestoPorTorneo_Result> usp_PuestoPorTorneo(Nullable<int> puesto)
+        {
+            var puestoParameter = puesto.HasValue ?
+                new ObjectParameter("Puesto", puesto) :
+                new ObjectParameter("Puesto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PuestoPorTorneo_Result>("usp_PuestoPorTorneo", puestoParameter);
         }
     }
 }

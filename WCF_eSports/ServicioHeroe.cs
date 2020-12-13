@@ -37,5 +37,65 @@ namespace WCF_eSports
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<HeroeConteo> HeroePorcentaje(Int16 IdTorneo)
+        {
+            try
+            {
+                eSportsEntities entities = new eSportsEntities();
+                List<HeroeConteo> objLista = new List<HeroeConteo>();
+
+                var query = entities.usp_HeroesPorcentaje(IdTorneo);
+
+                foreach (var item in query)
+                {
+                    HeroeConteo objItem = new HeroeConteo();
+                    objItem.NomHeroe = item.NomHeroe;
+                    objItem.ConHeroe = Convert.ToInt16(item.HeroCount);
+                    objItem.Porcentaje = item.Porcentaje;
+
+                    objLista.Add(objItem);
+                }
+
+                return objLista;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+        public List<HeroeRol> HeroeJugadorRoles(Int16 IdHeroe, String RolJugador)
+        {
+            try
+            {
+                eSportsEntities entity = new eSportsEntities();
+                List<HeroeRol> objLista = new List<HeroeRol>();
+
+                var query = entity.usp_ListarHeroeRol(IdHeroe, RolJugador);
+
+                foreach(var item in query)
+                {
+                    HeroeRol objItem = new HeroeRol();
+                    objItem.IdPartida = Convert.ToInt16(item.IdPartida);
+                    objItem.IdJugador = Convert.ToInt16(item.IdJugador);
+                    objItem.Nickname = item.NickJugador;
+                    objItem.IdHeroe = Convert.ToInt16(item.IdHeroe);
+                    objItem.NomHeroe = item.NomHeroe;
+                    objItem.Kills = Convert.ToInt16(item.Kills);
+                    objItem.Deaths = Convert.ToInt16(item.Deaths);
+                    objItem.Assists = Convert.ToInt16(item.Assists);
+
+                    objLista.Add(objItem);
+                }
+
+                return objLista;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
