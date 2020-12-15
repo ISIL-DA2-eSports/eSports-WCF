@@ -19,6 +19,39 @@ namespace WCF_eSports
 
         [OperationContract]
         List<EquipoPuestos> PuestoTorneo(Int16 IdTorneo);
+
+        [OperationContract]
+        List<EquipoBE> GetAllEquipo();
+    }
+
+    [DataContract]
+    [Serializable]
+    public class EquipoBE
+    {
+        private Int16 mvarIdEquipo;
+        private String mvarNomEquipo;
+        private String mvarPaisEquipo;
+
+        [DataMember]
+        public Int16 IdEquipo
+        {
+            get { return mvarIdEquipo; }
+            set { mvarIdEquipo = value; }
+        }
+
+        [DataMember]
+        public String NomEquipo
+        {
+            get { return mvarNomEquipo; }
+            set { mvarNomEquipo = value; }
+        }
+
+        [DataMember]
+        public String PaisEquipo
+        {
+            get { return mvarPaisEquipo; }
+            set { mvarPaisEquipo = value; }
+        }
     }
 
     [DataContract]

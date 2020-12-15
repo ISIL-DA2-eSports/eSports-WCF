@@ -17,7 +17,7 @@ namespace WCF_eSports
             {
                 List<TorneoBE> objLista = new List<TorneoBE>();
 
-                var query = entity.ConsultarFechaTorneo(FecIni, FecFin);
+                var query = entity.ConsultarFechaTorneo1(FecIni, FecFin);
 
                 foreach (var item in query)
                 {
@@ -95,6 +95,36 @@ namespace WCF_eSports
             catch (Exception ex)
             {
 
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<TorneoBE> GetAllTorneo()
+        {
+            try
+            {
+                eSportsEntities entity = new eSportsEntities();
+                List<TorneoBE> objListaTorneo = new List<TorneoBE>();
+
+                var query = (from objTorneo in entity.TORNEO
+                             select objTorneo);
+
+                foreach (var objTorneoConsultar in query)
+                {
+                    TorneoBE objTorneoBE = new TorneoBE();
+                    objTorneoBE.IdTorneo = Convert.ToInt16(objTorneoConsultar.IdTorneo);
+                    objTorneoBE.Nombre = objTorneoConsultar.NomTorneo;
+                    objTorneoBE.Org = objTorneoConsultar.OrgTorneo;
+                    objTorneoBE.Pais = objTorneoConsultar.PaisTorneo;
+                    objTorneoBE.Lugar = objTorneoConsultar.LugarTorneo;
+
+                    objListaTorneo.Add(objTorneoBE);
+                }
+
+                return objListaTorneo;
+            }
+            catch (Exception ex)
+            {
                 throw new Exception(ex.Message);
             }
         }

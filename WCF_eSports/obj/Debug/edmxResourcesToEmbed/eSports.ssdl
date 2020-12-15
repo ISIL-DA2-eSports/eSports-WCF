@@ -140,6 +140,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_HEROEROL' no tiene definida n
     <Key>
       <PropertyRef Name="IdPartida" />
       <PropertyRef Name="IdJugador" />
+      <PropertyRef Name="RoundPartida" />
       <PropertyRef Name="NickJugador" />
       <PropertyRef Name="IdHeroe" />
       <PropertyRef Name="NomHeroe" />
@@ -150,6 +151,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_HEROEROL' no tiene definida n
     </Key>
     <Property Name="IdPartida" Type="int" Nullable="false" />
     <Property Name="IdJugador" Type="int" Nullable="false" />
+    <Property Name="RoundPartida" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="NickJugador" Type="varchar" MaxLength="30" Nullable="false" />
     <Property Name="IdHeroe" Type="int" Nullable="false" />
     <Property Name="NomHeroe" Type="varchar" MaxLength="50" Nullable="false" />
@@ -379,8 +381,18 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="ConsultarFechaTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaIni" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="ConsultarHeroeComplejidad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Complejidad" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="ListarJugadorPorPais" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="pais" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="usp_EdadJugador" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Edad" Type="int" Mode="In" />
   </Function>
   <Function Name="usp_GananciaTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdTorneo" Type="int" Mode="In" />
@@ -396,6 +408,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
     <Parameter Name="idheroe" Type="int" Mode="In" />
     <Parameter Name="roljugador" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="usp_ListarHeroes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="usp_PuestoPorTorneo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Puesto" Type="int" Mode="In" />
   </Function>
@@ -422,6 +435,7 @@ advertencia 6002: La tabla o vista 'eSports.dbo.vw_RankingKillsPorPartida' no ti
       <DefiningQuery>SELECT 
     [vw_HEROEROL].[IdPartida] AS [IdPartida], 
     [vw_HEROEROL].[IdJugador] AS [IdJugador], 
+    [vw_HEROEROL].[RoundPartida] AS [RoundPartida], 
     [vw_HEROEROL].[NickJugador] AS [NickJugador], 
     [vw_HEROEROL].[IdHeroe] AS [IdHeroe], 
     [vw_HEROEROL].[NomHeroe] AS [NomHeroe], 

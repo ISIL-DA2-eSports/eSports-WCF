@@ -122,6 +122,240 @@ namespace WebWCF_eSports.ProxyHeroe {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HeroeConteo", Namespace="http://schemas.datacontract.org/2004/07/WCF_eSports")]
+    [System.SerializableAttribute()]
+    public partial class HeroeConteo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short ConHeroeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomHeroeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PorcentajeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short ConHeroe {
+            get {
+                return this.ConHeroeField;
+            }
+            set {
+                if ((this.ConHeroeField.Equals(value) != true)) {
+                    this.ConHeroeField = value;
+                    this.RaisePropertyChanged("ConHeroe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NomHeroe {
+            get {
+                return this.NomHeroeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomHeroeField, value) != true)) {
+                    this.NomHeroeField = value;
+                    this.RaisePropertyChanged("NomHeroe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Porcentaje {
+            get {
+                return this.PorcentajeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PorcentajeField, value) != true)) {
+                    this.PorcentajeField = value;
+                    this.RaisePropertyChanged("Porcentaje");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HeroeRol", Namespace="http://schemas.datacontract.org/2004/07/WCF_eSports")]
+    [System.SerializableAttribute()]
+    public partial class HeroeRol : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short AssistsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short DeathsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdHeroeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdJugadorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short IdPartidaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short KillsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NicknameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomHeroeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Assists {
+            get {
+                return this.AssistsField;
+            }
+            set {
+                if ((this.AssistsField.Equals(value) != true)) {
+                    this.AssistsField = value;
+                    this.RaisePropertyChanged("Assists");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Deaths {
+            get {
+                return this.DeathsField;
+            }
+            set {
+                if ((this.DeathsField.Equals(value) != true)) {
+                    this.DeathsField = value;
+                    this.RaisePropertyChanged("Deaths");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short IdHeroe {
+            get {
+                return this.IdHeroeField;
+            }
+            set {
+                if ((this.IdHeroeField.Equals(value) != true)) {
+                    this.IdHeroeField = value;
+                    this.RaisePropertyChanged("IdHeroe");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short IdJugador {
+            get {
+                return this.IdJugadorField;
+            }
+            set {
+                if ((this.IdJugadorField.Equals(value) != true)) {
+                    this.IdJugadorField = value;
+                    this.RaisePropertyChanged("IdJugador");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short IdPartida {
+            get {
+                return this.IdPartidaField;
+            }
+            set {
+                if ((this.IdPartidaField.Equals(value) != true)) {
+                    this.IdPartidaField = value;
+                    this.RaisePropertyChanged("IdPartida");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Kills {
+            get {
+                return this.KillsField;
+            }
+            set {
+                if ((this.KillsField.Equals(value) != true)) {
+                    this.KillsField = value;
+                    this.RaisePropertyChanged("Kills");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nickname {
+            get {
+                return this.NicknameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NicknameField, value) != true)) {
+                    this.NicknameField = value;
+                    this.RaisePropertyChanged("Nickname");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NomHeroe {
+            get {
+                return this.NomHeroeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomHeroeField, value) != true)) {
+                    this.NomHeroeField = value;
+                    this.RaisePropertyChanged("NomHeroe");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyHeroe.IServicioHeroe")]
     public interface IServicioHeroe {
@@ -131,6 +365,18 @@ namespace WebWCF_eSports.ProxyHeroe {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHeroe/HeroeComplejidad", ReplyAction="http://tempuri.org/IServicioHeroe/HeroeComplejidadResponse")]
         System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeBE[]> HeroeComplejidadAsync(string complejidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHeroe/HeroePorcentaje", ReplyAction="http://tempuri.org/IServicioHeroe/HeroePorcentajeResponse")]
+        WebWCF_eSports.ProxyHeroe.HeroeConteo[] HeroePorcentaje(short IdTorneo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHeroe/HeroePorcentaje", ReplyAction="http://tempuri.org/IServicioHeroe/HeroePorcentajeResponse")]
+        System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeConteo[]> HeroePorcentajeAsync(short IdTorneo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHeroe/HeroeJugadorRoles", ReplyAction="http://tempuri.org/IServicioHeroe/HeroeJugadorRolesResponse")]
+        WebWCF_eSports.ProxyHeroe.HeroeRol[] HeroeJugadorRoles(short IdHeroe, string RolJugador);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioHeroe/HeroeJugadorRoles", ReplyAction="http://tempuri.org/IServicioHeroe/HeroeJugadorRolesResponse")]
+        System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeRol[]> HeroeJugadorRolesAsync(short IdHeroe, string RolJugador);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +412,22 @@ namespace WebWCF_eSports.ProxyHeroe {
         
         public System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeBE[]> HeroeComplejidadAsync(string complejidad) {
             return base.Channel.HeroeComplejidadAsync(complejidad);
+        }
+        
+        public WebWCF_eSports.ProxyHeroe.HeroeConteo[] HeroePorcentaje(short IdTorneo) {
+            return base.Channel.HeroePorcentaje(IdTorneo);
+        }
+        
+        public System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeConteo[]> HeroePorcentajeAsync(short IdTorneo) {
+            return base.Channel.HeroePorcentajeAsync(IdTorneo);
+        }
+        
+        public WebWCF_eSports.ProxyHeroe.HeroeRol[] HeroeJugadorRoles(short IdHeroe, string RolJugador) {
+            return base.Channel.HeroeJugadorRoles(IdHeroe, RolJugador);
+        }
+        
+        public System.Threading.Tasks.Task<WebWCF_eSports.ProxyHeroe.HeroeRol[]> HeroeJugadorRolesAsync(short IdHeroe, string RolJugador) {
+            return base.Channel.HeroeJugadorRolesAsync(IdHeroe, RolJugador);
         }
     }
 }

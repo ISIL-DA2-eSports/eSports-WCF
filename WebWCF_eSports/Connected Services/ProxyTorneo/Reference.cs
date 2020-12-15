@@ -122,6 +122,224 @@ namespace WebWCF_eSports.ProxyTorneo {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TorneoEquipos", Namespace="http://schemas.datacontract.org/2004/07/WCF_eSports")]
+    [System.SerializableAttribute()]
+    public partial class TorneoEquipos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LugarTorneoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomTorneoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaisTorneoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short PuestoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LugarTorneo {
+            get {
+                return this.LugarTorneoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LugarTorneoField, value) != true)) {
+                    this.LugarTorneoField = value;
+                    this.RaisePropertyChanged("LugarTorneo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NomTorneo {
+            get {
+                return this.NomTorneoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomTorneoField, value) != true)) {
+                    this.NomTorneoField = value;
+                    this.RaisePropertyChanged("NomTorneo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaisTorneo {
+            get {
+                return this.PaisTorneoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaisTorneoField, value) != true)) {
+                    this.PaisTorneoField = value;
+                    this.RaisePropertyChanged("PaisTorneo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Puesto {
+            get {
+                return this.PuestoField;
+            }
+            set {
+                if ((this.PuestoField.Equals(value) != true)) {
+                    this.PuestoField = value;
+                    this.RaisePropertyChanged("Puesto");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PuestoTorneo", Namespace="http://schemas.datacontract.org/2004/07/WCF_eSports")]
+    [System.SerializableAttribute()]
+    public partial class PuestoTorneo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short DerrotasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomEquipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomTorneoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaisEquipoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PaisTorneoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private short VictoriasField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Derrotas {
+            get {
+                return this.DerrotasField;
+            }
+            set {
+                if ((this.DerrotasField.Equals(value) != true)) {
+                    this.DerrotasField = value;
+                    this.RaisePropertyChanged("Derrotas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NomEquipo {
+            get {
+                return this.NomEquipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomEquipoField, value) != true)) {
+                    this.NomEquipoField = value;
+                    this.RaisePropertyChanged("NomEquipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NomTorneo {
+            get {
+                return this.NomTorneoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomTorneoField, value) != true)) {
+                    this.NomTorneoField = value;
+                    this.RaisePropertyChanged("NomTorneo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaisEquipo {
+            get {
+                return this.PaisEquipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaisEquipoField, value) != true)) {
+                    this.PaisEquipoField = value;
+                    this.RaisePropertyChanged("PaisEquipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PaisTorneo {
+            get {
+                return this.PaisTorneoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PaisTorneoField, value) != true)) {
+                    this.PaisTorneoField = value;
+                    this.RaisePropertyChanged("PaisTorneo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public short Victorias {
+            get {
+                return this.VictoriasField;
+            }
+            set {
+                if ((this.VictoriasField.Equals(value) != true)) {
+                    this.VictoriasField = value;
+                    this.RaisePropertyChanged("Victorias");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ProxyTorneo.IServicioTorneo")]
     public interface IServicioTorneo {
@@ -131,6 +349,18 @@ namespace WebWCF_eSports.ProxyTorneo {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioTorneo/FechaTorneo", ReplyAction="http://tempuri.org/IServicioTorneo/FechaTorneoResponse")]
         System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.TorneoBE[]> FechaTorneoAsync(System.DateTime FecIni, System.DateTime FecFin);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioTorneo/ListarTorneosEquipos", ReplyAction="http://tempuri.org/IServicioTorneo/ListarTorneosEquiposResponse")]
+        WebWCF_eSports.ProxyTorneo.TorneoEquipos[] ListarTorneosEquipos(short IdEquipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioTorneo/ListarTorneosEquipos", ReplyAction="http://tempuri.org/IServicioTorneo/ListarTorneosEquiposResponse")]
+        System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.TorneoEquipos[]> ListarTorneosEquiposAsync(short IdEquipo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioTorneo/ListarPuestoTorneo", ReplyAction="http://tempuri.org/IServicioTorneo/ListarPuestoTorneoResponse")]
+        WebWCF_eSports.ProxyTorneo.PuestoTorneo[] ListarPuestoTorneo(short Puesto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicioTorneo/ListarPuestoTorneo", ReplyAction="http://tempuri.org/IServicioTorneo/ListarPuestoTorneoResponse")]
+        System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.PuestoTorneo[]> ListarPuestoTorneoAsync(short Puesto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -166,6 +396,22 @@ namespace WebWCF_eSports.ProxyTorneo {
         
         public System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.TorneoBE[]> FechaTorneoAsync(System.DateTime FecIni, System.DateTime FecFin) {
             return base.Channel.FechaTorneoAsync(FecIni, FecFin);
+        }
+        
+        public WebWCF_eSports.ProxyTorneo.TorneoEquipos[] ListarTorneosEquipos(short IdEquipo) {
+            return base.Channel.ListarTorneosEquipos(IdEquipo);
+        }
+        
+        public System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.TorneoEquipos[]> ListarTorneosEquiposAsync(short IdEquipo) {
+            return base.Channel.ListarTorneosEquiposAsync(IdEquipo);
+        }
+        
+        public WebWCF_eSports.ProxyTorneo.PuestoTorneo[] ListarPuestoTorneo(short Puesto) {
+            return base.Channel.ListarPuestoTorneo(Puesto);
+        }
+        
+        public System.Threading.Tasks.Task<WebWCF_eSports.ProxyTorneo.PuestoTorneo[]> ListarPuestoTorneoAsync(short Puesto) {
+            return base.Channel.ListarPuestoTorneoAsync(Puesto);
         }
     }
 }

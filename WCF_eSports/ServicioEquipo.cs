@@ -90,5 +90,34 @@ namespace WCF_eSports
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<EquipoBE> GetAllEquipo()
+        {
+            try
+            {
+                eSportsEntities entity = new eSportsEntities();
+                List<EquipoBE> objListaEquipo = new List<EquipoBE>();
+
+                var query = (from objEquipo in entity.EQUIPO
+                             select objEquipo);
+
+                foreach (var objEquipoConsultar in query)
+                {
+                    EquipoBE objEquipoBE = new EquipoBE();
+                    objEquipoBE.IdEquipo = Convert.ToInt16(objEquipoConsultar.IdEquipo);
+                    objEquipoBE.NomEquipo = objEquipoConsultar.NomEquipo;
+                    objEquipoBE.PaisEquipo = objEquipoConsultar.PaisEquipo;
+
+                    objListaEquipo.Add(objEquipoBE);
+                }
+
+                return objListaEquipo;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

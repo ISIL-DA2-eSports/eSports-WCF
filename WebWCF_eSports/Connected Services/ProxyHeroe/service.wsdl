@@ -13,16 +13,54 @@
   <wsdl:message name="IServicioHeroe_HeroeComplejidad_OutputMessage">
     <wsdl:part name="parameters" element="tns:HeroeComplejidadResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioHeroe_HeroePorcentaje_InputMessage">
+    <wsdl:part name="parameters" element="tns:HeroePorcentaje" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHeroe_HeroePorcentaje_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HeroePorcentajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHeroe_HeroeJugadorRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:HeroeJugadorRoles" />
+  </wsdl:message>
+  <wsdl:message name="IServicioHeroe_HeroeJugadorRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HeroeJugadorRolesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioHeroe">
     <wsdl:operation name="HeroeComplejidad">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioHeroe/HeroeComplejidad" message="tns:IServicioHeroe_HeroeComplejidad_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioHeroe/HeroeComplejidadResponse" message="tns:IServicioHeroe_HeroeComplejidad_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HeroePorcentaje">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioHeroe/HeroePorcentaje" message="tns:IServicioHeroe_HeroePorcentaje_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioHeroe/HeroePorcentajeResponse" message="tns:IServicioHeroe_HeroePorcentaje_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="HeroeJugadorRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioHeroe/HeroeJugadorRoles" message="tns:IServicioHeroe_HeroeJugadorRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioHeroe/HeroeJugadorRolesResponse" message="tns:IServicioHeroe_HeroeJugadorRoles_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioHeroe" type="tns:IServicioHeroe">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HeroeComplejidad">
       <soap:operation soapAction="http://tempuri.org/IServicioHeroe/HeroeComplejidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HeroePorcentaje">
+      <soap:operation soapAction="http://tempuri.org/IServicioHeroe/HeroePorcentaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HeroeJugadorRoles">
+      <soap:operation soapAction="http://tempuri.org/IServicioHeroe/HeroeJugadorRoles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

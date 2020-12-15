@@ -10,19 +10,13 @@
 namespace WCF_eSports
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class vw_HEROEROL
+    public partial class usp_ListarHeroes_Result
     {
-        public int IdPartida { get; set; }
-        public int IdJugador { get; set; }
-        public string NickJugador { get; set; }
         public int IdHeroe { get; set; }
         public string NomHeroe { get; set; }
-        public string RolJugador { get; set; }
-        public int Kills { get; set; }
-        public int Deaths { get; set; }
-        public int Assists { get; set; }
-        public string RoundPartida { get; set; }
+        public string Atributo { get; set; }
+        public string Tipo { get; set; }
+        public string Complejidad { get; set; }
     }
 }

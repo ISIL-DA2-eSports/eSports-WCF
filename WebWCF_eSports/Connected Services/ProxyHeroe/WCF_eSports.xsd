@@ -16,4 +16,37 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="HeroeBE" nillable="true" type="tns:HeroeBE" />
+  <xs:complexType name="ArrayOfHeroeConteo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HeroeConteo" nillable="true" type="tns:HeroeConteo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHeroeConteo" nillable="true" type="tns:ArrayOfHeroeConteo" />
+  <xs:complexType name="HeroeConteo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConHeroe" type="xs:short" />
+      <xs:element minOccurs="0" name="NomHeroe" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Porcentaje" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HeroeConteo" nillable="true" type="tns:HeroeConteo" />
+  <xs:complexType name="ArrayOfHeroeRol">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="HeroeRol" nillable="true" type="tns:HeroeRol" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfHeroeRol" nillable="true" type="tns:ArrayOfHeroeRol" />
+  <xs:complexType name="HeroeRol">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Assists" type="xs:short" />
+      <xs:element minOccurs="0" name="Deaths" type="xs:short" />
+      <xs:element minOccurs="0" name="IdHeroe" type="xs:short" />
+      <xs:element minOccurs="0" name="IdJugador" type="xs:short" />
+      <xs:element minOccurs="0" name="IdPartida" type="xs:short" />
+      <xs:element minOccurs="0" name="Kills" type="xs:short" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomHeroe" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HeroeRol" nillable="true" type="tns:HeroeRol" />
 </xs:schema>

@@ -15,4 +15,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="HeroePorcentaje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdTorneo" type="xs:short" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HeroePorcentajeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCF_eSports" minOccurs="0" name="HeroePorcentajeResult" nillable="true" type="q2:ArrayOfHeroeConteo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HeroeJugadorRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IdHeroe" type="xs:short" />
+        <xs:element minOccurs="0" name="RolJugador" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="HeroeJugadorRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCF_eSports" minOccurs="0" name="HeroeJugadorRolesResult" nillable="true" type="q3:ArrayOfHeroeRol" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

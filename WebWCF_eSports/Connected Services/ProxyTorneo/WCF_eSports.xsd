@@ -16,4 +16,36 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TorneoBE" nillable="true" type="tns:TorneoBE" />
+  <xs:complexType name="ArrayOfTorneoEquipos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TorneoEquipos" nillable="true" type="tns:TorneoEquipos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTorneoEquipos" nillable="true" type="tns:ArrayOfTorneoEquipos" />
+  <xs:complexType name="TorneoEquipos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LugarTorneo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomTorneo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaisTorneo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Puesto" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TorneoEquipos" nillable="true" type="tns:TorneoEquipos" />
+  <xs:complexType name="ArrayOfPuestoTorneo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PuestoTorneo" nillable="true" type="tns:PuestoTorneo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPuestoTorneo" nillable="true" type="tns:ArrayOfPuestoTorneo" />
+  <xs:complexType name="PuestoTorneo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Derrotas" type="xs:short" />
+      <xs:element minOccurs="0" name="NomEquipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomTorneo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaisEquipo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaisTorneo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Victorias" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PuestoTorneo" nillable="true" type="tns:PuestoTorneo" />
 </xs:schema>

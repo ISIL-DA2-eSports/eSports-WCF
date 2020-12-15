@@ -161,5 +161,41 @@ namespace WCF_eSports
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_PuestoPorTorneo_Result>("usp_PuestoPorTorneo", puestoParameter);
         }
+    
+        public virtual ObjectResult<ConsultarHeroeComplejidad1_Result> ConsultarHeroeComplejidad1(string complejidad)
+        {
+            var complejidadParameter = complejidad != null ?
+                new ObjectParameter("Complejidad", complejidad) :
+                new ObjectParameter("Complejidad", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarHeroeComplejidad1_Result>("ConsultarHeroeComplejidad1", complejidadParameter);
+        }
+    
+        public virtual ObjectResult<usp_EdadJugador1_Result> usp_EdadJugador1(Nullable<int> edad)
+        {
+            var edadParameter = edad.HasValue ?
+                new ObjectParameter("Edad", edad) :
+                new ObjectParameter("Edad", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_EdadJugador1_Result>("usp_EdadJugador1", edadParameter);
+        }
+    
+        public virtual ObjectResult<ConsultarFechaTorneo1_Result> ConsultarFechaTorneo1(Nullable<System.DateTime> fechaIni, Nullable<System.DateTime> fechaFin)
+        {
+            var fechaIniParameter = fechaIni.HasValue ?
+                new ObjectParameter("FechaIni", fechaIni) :
+                new ObjectParameter("FechaIni", typeof(System.DateTime));
+    
+            var fechaFinParameter = fechaFin.HasValue ?
+                new ObjectParameter("FechaFin", fechaFin) :
+                new ObjectParameter("FechaFin", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ConsultarFechaTorneo1_Result>("ConsultarFechaTorneo1", fechaIniParameter, fechaFinParameter);
+        }
+    
+        public virtual ObjectResult<usp_ListarHeroes_Result> usp_ListarHeroes()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ListarHeroes_Result>("usp_ListarHeroes");
+        }
     }
 }

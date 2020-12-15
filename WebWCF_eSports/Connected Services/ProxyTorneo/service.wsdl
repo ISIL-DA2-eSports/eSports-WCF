@@ -13,16 +13,54 @@
   <wsdl:message name="IServicioTorneo_FechaTorneo_OutputMessage">
     <wsdl:part name="parameters" element="tns:FechaTorneoResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicioTorneo_ListarTorneosEquipos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTorneosEquipos" />
+  </wsdl:message>
+  <wsdl:message name="IServicioTorneo_ListarTorneosEquipos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTorneosEquiposResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicioTorneo_ListarPuestoTorneo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPuestoTorneo" />
+  </wsdl:message>
+  <wsdl:message name="IServicioTorneo_ListarPuestoTorneo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarPuestoTorneoResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicioTorneo">
     <wsdl:operation name="FechaTorneo">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicioTorneo/FechaTorneo" message="tns:IServicioTorneo_FechaTorneo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicioTorneo/FechaTorneoResponse" message="tns:IServicioTorneo_FechaTorneo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTorneosEquipos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioTorneo/ListarTorneosEquipos" message="tns:IServicioTorneo_ListarTorneosEquipos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioTorneo/ListarTorneosEquiposResponse" message="tns:IServicioTorneo_ListarTorneosEquipos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarPuestoTorneo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicioTorneo/ListarPuestoTorneo" message="tns:IServicioTorneo_ListarPuestoTorneo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicioTorneo/ListarPuestoTorneoResponse" message="tns:IServicioTorneo_ListarPuestoTorneo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicioTorneo" type="tns:IServicioTorneo">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="FechaTorneo">
       <soap:operation soapAction="http://tempuri.org/IServicioTorneo/FechaTorneo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTorneosEquipos">
+      <soap:operation soapAction="http://tempuri.org/IServicioTorneo/ListarTorneosEquipos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarPuestoTorneo">
+      <soap:operation soapAction="http://tempuri.org/IServicioTorneo/ListarPuestoTorneo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

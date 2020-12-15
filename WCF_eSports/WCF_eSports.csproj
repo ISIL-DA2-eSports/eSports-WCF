@@ -52,7 +52,13 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultarFechaTorneo1_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarFechaTorneo_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarHeroeComplejidad1_Result.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="ConsultarHeroeComplejidad_Result.cs">
@@ -92,6 +98,7 @@
     <Compile Include="IServicioEquipo.cs" />
     <Compile Include="IServicioHeroe.cs" />
     <Compile Include="IServicioJugador.cs" />
+    <Compile Include="IServicioPartida.cs" />
     <Compile Include="IServicioTorneo.cs" />
     <Compile Include="JUEGO.cs">
       <DependentUpon>eSports.tt</DependentUpon>
@@ -122,8 +129,12 @@
     <Compile Include="ServicioEquipo.cs" />
     <Compile Include="ServicioHeroe.cs" />
     <Compile Include="ServicioJugador.cs" />
+    <Compile Include="ServicioPartida.cs" />
     <Compile Include="ServicioTorneo.cs" />
     <Compile Include="TORNEO.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_EdadJugador1_Result.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_EdadJugador_Result.cs">
@@ -139,6 +150,9 @@
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_ListarHeroeRol_Result.cs">
+      <DependentUpon>eSports.tt</DependentUpon>
+    </Compile>
+    <Compile Include="usp_ListarHeroes_Result.cs">
       <DependentUpon>eSports.tt</DependentUpon>
     </Compile>
     <Compile Include="usp_PuestoPorTorneo_Result.cs">

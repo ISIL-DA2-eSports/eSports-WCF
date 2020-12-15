@@ -82,7 +82,7 @@ namespace WCF_eSports
             {
                 eSportsEntities entity = new eSportsEntities();
                 List<JugadorBE> objLista = new List<JugadorBE>();
-                var query = entity.usp_EdadJugador(edad);
+                var query = entity.usp_EdadJugador1(edad);
             
                 foreach (var item in query)
                 {

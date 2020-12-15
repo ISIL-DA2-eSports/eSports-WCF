@@ -19,6 +19,10 @@ namespace WCF_eSports
 
         [OperationContract]
         List<HeroeRol> HeroeJugadorRoles(Int16 IdHeroe, String RolJugador);
+
+        [OperationContract]
+        List<HeroeBE> GetAllHeroes();
+        
     }
 
     [DataContract]
@@ -98,6 +102,7 @@ namespace WCF_eSports
     public class HeroeRol {
         private Int16 mvarIdPartida;
         private Int16 mvarIdJugador;
+        private String mvarRound;
         private String mvarNickname;
         private Int16 mvarIdHeroe;
         private String mvarNomHeroe;
@@ -118,6 +123,14 @@ namespace WCF_eSports
             get { return mvarIdJugador; }
             set { mvarIdJugador = value; }
         }
+
+        //[DataMember]
+        //public String Round
+        //{
+        //    get { return mvarRound; }
+        //    set { mvarRound = value; }
+        //}
+
         [DataMember]
         public String Nickname
         {

@@ -1,0 +1,20 @@
+<publishData>
+  <publishTarget publishUrl="http://localhost/WCFeSports">
+    <file relUrl="Web.config" publishTime="12/15/2020 00:52:54" />
+    <file relUrl="bin/EntityFramework.dll" publishTime="12/09/2020 11:39:25" />
+    <file relUrl="eSports.tt" publishTime="12/09/2020 11:39:24" />
+    <file relUrl="WCF_eSports.ServicioJugador.svc" publishTime="12/15/2020 01:01:14" />
+    <file relUrl="bin/EntityFramework.xml" publishTime="12/09/2020 11:39:25" />
+    <file relUrl="bin/WCF_eSports.dll.config" publishTime="12/15/2020 00:52:54" />
+    <file relUrl="bin/WCF_eSports.dll" publishTime="12/15/2020 01:00:20" />
+    <file relUrl="bin/EntityFramework.SqlServer.dll" publishTime="12/09/2020 11:39:24" />
+    <file relUrl="bin/WCF_eSports.pdb" publishTime="12/15/2020 01:00:20" />
+    <file relUrl="bin/EntityFramework.SqlServer.xml" publishTime="12/09/2020 11:39:24" />
+    <file relUrl="WCF_eSports.ServicioHeroe.svc" publishTime="12/15/2020 01:01:14" />
+    <file relUrl="WCF_eSports.ServicioPartida.svc" publishTime="12/15/2020 01:01:14" />
+    <file relUrl="eSports.Context.tt" publishTime="12/09/2020 11:39:24" />
+    <file relUrl="WCF_eSports.ServicioEquipo.svc" publishTime="12/15/2020 01:01:14" />
+    <file relUrl="WCF_eSports.Service1.svc" publishTime="12/15/2020 01:01:14" />
+    <file relUrl="WCF_eSports.ServicioTorneo.svc" publishTime="12/15/2020 01:01:14" />
+  </publishTarget>
+</publishData>

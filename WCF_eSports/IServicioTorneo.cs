@@ -19,17 +19,29 @@ namespace WCF_eSports
 
         [OperationContract]
         List<PuestoTorneo> ListarPuestoTorneo(Int16 Puesto);
+
+        [OperationContract]
+        List<TorneoBE> GetAllTorneo();
     }
 
     [DataContract]
     [Serializable]
     public class TorneoBE
     {
+        private Int16 mvarIdTorneo;
         private String mvarNomTorneo;
         private String mvarOrgTorneo;
         private String mvarPaisTorneo;
         private String mvarLugarTorneo;
         private DateTime mvarFec;
+
+        [DataMember]
+        public Int16 IdTorneo
+        {
+            get { return mvarIdTorneo; }
+            set { mvarIdTorneo = value; }
+        }
+
         [DataMember]
         public String Nombre
         {
@@ -54,12 +66,7 @@ namespace WCF_eSports
             get { return mvarLugarTorneo; }
             set { mvarLugarTorneo = value; }
         }
-        [DataMember]
-        public DateTime Fecha
-        {
-            get { return mvarFec; }
-            set { mvarFec = value; }
-        }
+        
     }
 
     [DataContract]

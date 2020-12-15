@@ -17,7 +17,7 @@ namespace WCF_eSports
             {
                 List<HeroeBE> objLista = new List<HeroeBE>();
 
-                var query = entity.ConsultarHeroeComplejidad(complejidad);
+                var query = entity.ConsultarHeroeComplejidad1(complejidad);
 
                 foreach (var item in query)
                 {
@@ -79,6 +79,7 @@ namespace WCF_eSports
                     HeroeRol objItem = new HeroeRol();
                     objItem.IdPartida = Convert.ToInt16(item.IdPartida);
                     objItem.IdJugador = Convert.ToInt16(item.IdJugador);
+                    //objItem.Round = item.RoundJugador;
                     objItem.Nickname = item.NickJugador;
                     objItem.IdHeroe = Convert.ToInt16(item.IdHeroe);
                     objItem.NomHeroe = item.NomHeroe;
@@ -90,6 +91,38 @@ namespace WCF_eSports
                 }
 
                 return objLista;
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<HeroeBE> GetAllHeroes()
+        {
+            eSportsEntities entity = new eSportsEntities();
+
+            try
+            {
+                List<HeroeBE> objListaHeroes = new List<HeroeBE>();
+
+                var query = (from objHeroe in entity.HEROE
+                             select objHeroe);
+
+                foreach (var objHeroeConsultar in query)
+                {
+                    HeroeBE objHeroeBE = new HeroeBE();
+                    objHeroeBE.Id = Convert.ToInt16(objHeroeConsultar.IdHeroe);
+                    objHeroeBE.Nombre = objHeroeConsultar.NomHeroe;
+                    objHeroeBE.Atributo = objHeroeConsultar.Atributo;
+                    objHeroeBE.Tipo = objHeroeConsultar.Tipo;
+                    objHeroeBE.Complejidad = objHeroeConsultar.Complejidad;
+
+                    objListaHeroes.Add(objHeroeBE);
+
+                }
+                return objListaHeroes;
             }
             catch (Exception ex)
             {

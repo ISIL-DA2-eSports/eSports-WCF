@@ -210,6 +210,7 @@
     <EntitySetMapping Name="vw_HEROEROL">
       <EntityTypeMapping TypeName="eSportsModel.vw_HEROEROL">
         <MappingFragment StoreEntitySet="vw_HEROEROL">
+          <ScalarProperty Name="RoundPartida" ColumnName="RoundPartida" />
           <ScalarProperty Name="Assists" ColumnName="Assists" />
           <ScalarProperty Name="Deaths" ColumnName="Deaths" />
           <ScalarProperty Name="Kills" ColumnName="Kills" />
@@ -252,6 +253,49 @@
           <ScalarProperty Name="PaisEquipo" ColumnName="PaisEquipo" />
           <ScalarProperty Name="Victorias" ColumnName="Victorias" />
           <ScalarProperty Name="Derrotas" ColumnName="Derrotas" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarHeroeComplejidad1" FunctionName="eSportsModel.Store.ConsultarHeroeComplejidad">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eSportsModel.ConsultarHeroeComplejidad1_Result">
+          <ScalarProperty Name="idHeroe" ColumnName="idHeroe" />
+          <ScalarProperty Name="NomHeroe" ColumnName="NomHeroe" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Atributo" ColumnName="Atributo" />
+          <ScalarProperty Name="Complejidad" ColumnName="Complejidad" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_EdadJugador1" FunctionName="eSportsModel.Store.usp_EdadJugador">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eSportsModel.usp_EdadJugador1_Result">
+          <ScalarProperty Name="ApeJugador" ColumnName="ApeJugador" />
+          <ScalarProperty Name="NomJugador" ColumnName="NomJugador" />
+          <ScalarProperty Name="NickJugador" ColumnName="NickJugador" />
+          <ScalarProperty Name="PaisJugador" ColumnName="PaisJugador" />
+          <ScalarProperty Name="EdadJugador" ColumnName="EdadJugador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ConsultarFechaTorneo1" FunctionName="eSportsModel.Store.ConsultarFechaTorneo">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eSportsModel.ConsultarFechaTorneo1_Result">
+          <ScalarProperty Name="NomTorneo" ColumnName="NomTorneo" />
+          <ScalarProperty Name="OrgTorneo" ColumnName="OrgTorneo" />
+          <ScalarProperty Name="PaisTorneo" ColumnName="PaisTorneo" />
+          <ScalarProperty Name="LugarTorneo" ColumnName="LugarTorneo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="usp_ListarHeroes" FunctionName="eSportsModel.Store.usp_ListarHeroes">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eSportsModel.usp_ListarHeroes_Result">
+          <ScalarProperty Name="IdHeroe" ColumnName="IdHeroe" />
+          <ScalarProperty Name="NomHeroe" ColumnName="NomHeroe" />
+          <ScalarProperty Name="Atributo" ColumnName="Atributo" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Complejidad" ColumnName="Complejidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

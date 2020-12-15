@@ -79,6 +79,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Connected Services\ProxyHeroe\WebWCF_eSports.ProxyHeroe.HeroeConteo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ProxyHeroe\WebWCF_eSports.ProxyHeroe.HeroeRol.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\ProxyJugador2\service.wsdl" />
     <None Include="Connected Services\ProxyJugador2\service.xsd">
       <SubType>Designer</SubType>
@@ -287,6 +293,12 @@
     <None Include="Connected Services\ProxyHeroe\WCF_eSports.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Connected Services\ProxyTorneo\WebWCF_eSports.ProxyTorneo.PuestoTorneo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ProxyTorneo\WebWCF_eSports.ProxyTorneo.TorneoEquipos.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
